@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Equipes index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Equipes index</h1>
+        <div class="row">
+            <div class="col">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>NomClub</th>
+                        <th>Categorie</th>
+                        <th>Couleur1</th>
+                        <th>Couleur2</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for equipe in equipes %}
+                        <tr>
+                            <td>{{ equipe.id }}</td>
+                            <td>{{ equipe.nomClub }}</td>
+                            <td>{{ equipe.categorie }}</td>
+                            <td class="cercle" style="background-color:{{ equipe.couleur1 }}"></td>
+                            <td class="cercle" style="background-color:{{ equipe.couleur2 }}"></td>
+                            <td>
+                                <a href="{{ path('app_equipes_show', {'id': equipe.id}) }}">show</a>
+                                <a href="{{ path('app_equipes_edit', {'id': equipe.id}) }}">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <a href="{{ path('app_equipes_new') }}">Nouvelle équipe</a>
+
+                <div class="row mt-5">
+                    <div class="col-2">
+                        <a href="{{ path('app_main') }}"><img src="{{ asset('img/retour.png') }}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

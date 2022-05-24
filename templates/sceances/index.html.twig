@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Séances index{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <div class="row vide2">
+
+    </div>
+        <div class="row">
+            <div class="col-7">
+
+            </div>
+            <div class="col">
+                <h1>Séances index</h1>
+                <table class="table mt-5">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Tirs Réussis</th>
+                        <th>Tirs Tentes</th>
+                        <th>Position Terrain</th>
+                        <th>Date Séance</th>
+                        <th>Pourcentage de Réussite</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for sceance in sceances %}
+                        <tr>
+                            <td>{{ sceance.id }}</td>
+                            <td>{{ sceance.tirsReussis }}</td>
+                            <td>{{ sceance.tirsTentes }}</td>
+                            <td>{{ sceance.positionTerrain }}</td>
+                            <td>{{ sceance.dateSceance ? sceance.dateSceance|date('Y-m-d') : '' }}</td>
+                            <td>{{ sceance.pourcentageReussite }}</td>
+                            <td>
+                                <a href="{{ path('app_sceances_show', {'id': sceance.id}) }}">show</a>
+                                <a href="{{ path('app_sceances_edit', {'id': sceance.id}) }}">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <a class="btn btn-primary" href="{{ path('app_sceances_new') }}">Create new</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

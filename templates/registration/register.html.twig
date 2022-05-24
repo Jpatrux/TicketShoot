@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-10"></div>
+            <div class="col-2">
+                <button type="logout" class="btn btn-lg btn-primary mt-4">Déconnexion</button>
+            </div>
+        </div>
+        <div class="row vide1">
+            <div class="col">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-7"></div>
+            <div class="col-4">
+                <h2>Ajouter un joueur</h2>
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <div class="row mt-4 pt-5">
+            <div class="col-8">
+            </div>
+            <div class="col-3">
+
+                {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.username) }}
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Password'
+                }) }}
+                {{ form_row(registrationForm.agreeTerms) }}
+
+                <button type="submit" class="btn btn-primary mt-4">Register</button>
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+            </div>
+            <div class="col-2">
+                <select name="" id="">
+                    <option value="">Choisissez une équipe</option>
+                    {% for equipe in equipes %}
+                        <option value="{{ equipe.id }}">{{ equipe.nomClub }} - {{ equipe.categorie }}</option>
+                    {% endfor %}
+                </select>
+                <div class="col-2">
+                    <select name="" id="">
+                        <option value="">Choisissez un poste</option>
+                        {% for poste in postes %}
+                            <option value="{{ poste.id }}">{{ poste.id }} - {{ poste.nom }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <a href="{{ path('app_main') }}"><img src="{{ asset('img/retour.png') }}" alt=""></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

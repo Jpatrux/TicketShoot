@@ -1,0 +1,38 @@
+body{
+    background-image: url("../../public/img/basket.jpg");
+    background-repeat: no-repeat;
+    color: white;
+}
+thead, tbody{
+    color: white;
+}
+
+.vide{
+    height: 400px;
+}
+
+.vide1{
+    height: 150px;
+}
+
+.vide2{
+    height: 250px;
+}
+
+h2{
+    font-size: 42px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+a:hover {
+    color: #C15C44;
+}
+
+.cercle {
+    width: 10px;
+    height: 10px;
+    border-radius: 20px;
+}

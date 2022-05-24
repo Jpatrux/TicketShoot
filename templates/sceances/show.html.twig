@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sceances{% endblock %}
+
+{% block body %}
+    <h1>Sceances</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sceance.id }}</td>
+            </tr>
+            <tr>
+                <th>TirsReussis</th>
+                <td>{{ sceance.tirsReussis }}</td>
+            </tr>
+            <tr>
+                <th>TirsTentes</th>
+                <td>{{ sceance.tirsTentes }}</td>
+            </tr>
+            <tr>
+                <th>PositionTerrain</th>
+                <td>{{ sceance.positionTerrain }}</td>
+            </tr>
+            <tr>
+                <th>DateSceance</th>
+                <td>{{ sceance.dateSceance ? sceance.dateSceance|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>PourcentageReussite</th>
+                <td>{{ sceance.pourcentageReussite }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_sceances_index') }}">back to list</a>
+
+    <a href="{{ path('app_sceances_edit', {'id': sceance.id}) }}">edit</a>
+
+    {{ include('sceances/_delete_form.html.twig') }}
+{% endblock %}
